@@ -1,0 +1,104 @@
+{% extends 'base-site.html' %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'site.css' %}">
+{% endblock %}
+
+{% block page_header_content %}
+    <div class="ui text container">
+      <h1 class="ui inverted header">
+        <div class="ui two column grid">
+          <div class="column">
+            <div class="ui segment">
+              <img class="ui medium image" src="{% static 'img/logo_expotec.png' %}"/>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui segment">
+              <img class="ui medium image" src="{% static 'img/logo_etal.png' %}"/>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui segment">
+              <img class="ui medium image" src="{% static 'img/logo_semanarte.png' %}"/>
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui segment">
+              <img class="ui medium image" src="{% static 'img/logo_secta.png' %}"/>
+            </div>
+          </div>
+        </div>
+      </h1>
+      <h2>De 10 a 15 de dezembro</h2>
+    </div>
+{% endblock %}
+
+{% block content %}
+  <h2 class="ui stripe horizontal divider header">
+    <a name="sobre">Sobre</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/sobre-evento.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="inscricoes">Inscrições</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/inscricoes.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="submissoes">Submissões</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/submissoes.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="programacao">Programação</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/programacao.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="a_cidade">A Cidade</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/a-cidade.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="organizacao">Organização</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/organizacao.html' %}
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable three column grid">
+        <div class="column">
+          <h4 class="ui inverted header">Coordenação Geral</h4>
+          <div class="ui inverted link list">
+            <div class="item">Antonia Francimar da Silva (Direção-Geral)</div>
+            <div class="item">Amélia Cristina Reis e Silva (DIAC)</div>
+            <div class="item">Lairton Souza Cruz (DIAD)</div>
+            <div class="item">Emanuel Neto Alves de Oliveira (COPEIN)</div>
+            <div class="item">Francisco Vieira Sales Júnior (COEX)</div>
+          </div>
+        </div>
+        <div class="column">
+          <h4 class="ui inverted header">Contato</h4>
+          <div class="ui inverted link list">
+            <div class="item">cocsev.pf@ifrn.edu.br</div>
+            <div class="item">(84) 4005-4109 (ramais 6619, 6603)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

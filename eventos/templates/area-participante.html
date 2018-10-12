@@ -1,0 +1,37 @@
+{% extends 'base-area.html' %}
+{% block content %}
+<h2 class="ui horizontal divider header">Inscrições</h2>
+<div class="ui text container">
+  {% if messages %}
+  {% for message in messages %}
+    <div class="ui {{ message.tags }} message">
+      <p>{{ message }}</p>
+    </div>
+  {% endfor %}
+  {% endif %}
+
+	{% for evento in eventos %}
+  <div class="ui vertical segment">
+    <h2>{{ evento.nome }}</h2>
+    {% if evento.permite_trabalhos %}
+    <h4>Trabalhos submetidos</h4>
+    <div class="ui relaxed divided list">
+      {% for trabalho in evento.meus_trabalhos %}
+      <div class="item">{{ trabalho.titulo }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div align="right">
+      {% if evento.minha_inscricao %}
+      {% if evento.permite_trabalhos %}
+      <a href="{% url 'trabalhos_submeter_trabalho' evento.pk %}" class="ui secondary button">Submeter trabalho</a>
+      {% endif %}
+      <a href="{% url 'eventos_desinscrever_evento' evento.pk %}" class="ui button">Remover inscrição</a>
+      {% else %}
+      <a href="{% url 'eventos_inscrever_evento' evento.pk %}" class="ui primary button">Inscrever-se</a>
+      {% endif %}
+    </div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

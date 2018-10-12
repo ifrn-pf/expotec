@@ -1,0 +1,48 @@
+{% extends 'base-site.html' %}
+{% load i18n crispy_forms_tags crispy_forms_filters %}
+
+{% block extrahead %}
+{{ block.super }}
+<style type="text/css">
+body {
+  background-color: #DADADA;
+}
+body > .grid {
+  height: 100%;
+}
+.column {
+  max-width: 450px;
+}
+</style>
+{% endblock %}
+
+{% block title %}{% trans 'Log in' %}{% endblock %}
+
+{% block content %}
+<h2 class="ui horizontal divider header">{% trans 'Log in' %}</h2>
+<div class="ui text container">
+  <div class="ui message">
+    Não possui cadastro? <a href="{% url 'registration_register' %}">Inscrever-se</a> ao invés disso.
+  </div>
+  <form novalidate class="ui large form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+      {{ form|crispy }}
+      <button type="submit" class="ui fluid large primary button">{% trans 'Login' %}</button>
+  </form>
+  {% if form.errors or form.non_field_errors %}
+  <div class="ui error message">
+    <ul class="list">
+    {% for field, errors in form.errors.items %}
+    <li>
+      <b>{{ field|capfirst }}</b>:
+      {% for error in errors %}
+        {{ error }}
+      {% endfor %}
+    </li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
