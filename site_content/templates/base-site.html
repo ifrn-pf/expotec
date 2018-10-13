@@ -42,11 +42,7 @@
     {% include 'pages_includes/site-menu.html' %}
     <div class="right menu">
       <div class="item">
-          {% if request.user.is_authenticated %}
-          <a class="ui button" href="{% url 'auth_logout' %}">Sair</a>
-          {% else %}
-          <a class="ui button" href="{% url 'auth_login' %}">Área do participante</a>
-          {% endif %}
+        <a class="ui button" href="{% url 'eventos_area_usuario' %}">Área do participante</a>
       </div>
     </div>
   </div>
@@ -55,11 +51,7 @@
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
   {% include 'pages_includes/site-menu.html' %}
-  {% if request.user.is_authenticated %}
-  <a class="item" href="{% url 'auth_logout' %}">Sair</a>
-  {% else %}
-  <a class="item" href="{% url 'auth_login' %}">Área do participante</a>
-  {% endif %}
+  <a class="item" href="{% url 'eventos_area_usuario' %}">Área do participante</a>
 </div>
 
 <!-- Page Contents -->
@@ -73,11 +65,7 @@
         </a>
         {% include 'pages_includes/site-menu.html' %}
         <div class="right item">
-          {% if request.user.is_authenticated %}
-          <a class="ui inverted button" href="{% url 'auth_logout' %}">Sair</a>
-          {% else %}
-          <a class="ui inverted button" href="{% url 'auth_login' %}">Área do participante</a>
-          {% endif %}
+          <a class="ui inverted button" href="{% url 'eventos_area_usuario' %}">Área do participante</a>
         </div>
       </div>
     </div>
