@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django import forms
 from crispy_forms.helper import FormHelper
-from .models import Usuario
+from .models import Usuario, Evento, Inscricao
 
 
 class UsuarioForm(forms.ModelForm):
@@ -24,6 +24,10 @@ class UsuarioChangeForm(UsuarioForm):
 
 
 class RegisterForm(UsuarioForm):
+    evento = forms.ModelMultipleChoiceField(
+        queryset=Evento.objects.all(),
+        widget=forms.CheckboxSelectMultiple)
+
     password1 = forms.CharField(
         label='Senha',
         help_text='Use pelo menos 6 caracteres.',
@@ -51,5 +55,14 @@ class RegisterForm(UsuarioForm):
     def save(self, *args, **kwargs):
         usuario = super(RegisterForm, self).save(*args, **kwargs)
         usuario.set_password(self.cleaned_data['password1'])
-        if kwargs['commit']:
+        if kwargs.get('commit', True):
             usuario.save()
+            for evento in self.cleaned_data.get('evento'):
+                Inscricao(usuario=usuario, evento=evento).save()
+        return usuario
+
+    class Meta:
+        model = Usuario
+        fields = ('evento', 'nome_completo', 'nome_social', 'email', 'cpf',
+                  'endereco', 'cidade', 'uf', 'pais',
+                  'instituicao', 'curso', 'password1', 'password2')
