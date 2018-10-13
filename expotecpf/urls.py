@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^eventos/', include('eventos.urls')),
     url(r'^trabalhos/', include('trabalhos.urls')),
-    url(r'', staticpage, name='home')
+    url(r'^$', staticpage, name='home')
 ]
 
 if settings.DEBUG:
