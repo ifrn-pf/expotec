@@ -91,8 +91,6 @@ STATIC_URL = env('STATIC_URL', default='/static/')
 STATIC_ROOT = env('STATIC_ROOT', default=str(root.path('static')))
 MEDIA_URL = env('MEDIA_URL', default='/media/')
 MEDIA_ROOT = env('MEDIA_ROOT', default=str(root.path('media')))
-
-
 AUTH_USER_MODEL = 'eventos.Usuario'
 SFP_HANDLE_HOMEPAGE = True
 CRISPY_TEMPLATE_PACK = 'semantic-ui'
@@ -101,3 +99,4 @@ REGISTRATION_FORM = 'eventos.forms.RegisterForm'
 ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS = True
 LOGIN_REDIRECT_URL = reverse_lazy('eventos_area_usuario')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
+LOGIN_URL = reverse_lazy('auth_login')

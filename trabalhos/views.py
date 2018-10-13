@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from crispy_forms.helper import FormHelper
 from eventos.models import Inscricao, Evento
@@ -10,7 +11,7 @@ from .forms import SubmeterTrabalhoForm
 from .models import Trabalho
 
 
-class SubmeterTrabalho(CreateView):
+class SubmeterTrabalho(LoginRequiredMixin, CreateView):
     model = Trabalho
     form_class = SubmeterTrabalhoForm
     success_url = reverse_lazy('eventos_area_usuario')
