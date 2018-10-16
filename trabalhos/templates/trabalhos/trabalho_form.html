@@ -3,10 +3,16 @@
 {% block content %}
 <h2 class="ui horizontal divider header">Submeter trabalho</h2>
 <div class="ui text container">
+  {% if form.fields.evento.queryset.count > 0 %}
   <form novalidate class="ui form" method="post" id="change-form" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
     {% csrf_token %}
     {% crispy form form_helper %}
     <button type="submit" class="ui primary button">Submeter trabalho</button>
   </form>
+  {% else %}
+  <div class="ui warning message">
+    Não há nenhum evento que permita submissão de trabalhos
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

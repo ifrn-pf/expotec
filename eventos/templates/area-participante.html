@@ -13,7 +13,7 @@
 	{% for evento in eventos %}
   <div class="ui vertical segment">
     <h2>{{ evento.nome }}</h2>
-    {% if evento.permite_trabalhos %}
+    {% if evento.minha_inscricao and evento.permite_trabalhos %}
     <h4>Trabalhos submetidos</h4>
     <div class="ui relaxed divided list">
       {% for trabalho in evento.meus_trabalhos %}
@@ -23,7 +23,7 @@
     {% endif %}
     <div align="right">
       {% if evento.minha_inscricao %}
-      {% if evento.permite_trabalhos %}
+      {% if evento.permite_trabalhos and evento.meus_trabalhos.count < trabalhos_por_inscricao %}
       <a href="{% url 'trabalhos_submeter_trabalho' evento.pk %}" class="ui secondary button">Submeter trabalho</a>
       {% endif %}
       <a href="{% url 'eventos_desinscrever_evento' evento.pk %}" class="ui button">Remover inscrição</a>

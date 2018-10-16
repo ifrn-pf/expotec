@@ -8,6 +8,7 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.conf import settings
 from sfp.views import staticflatpage
 from trabalhos.models import Trabalho
 from .models import Usuario, Evento, Inscricao
@@ -44,7 +45,12 @@ class ParticipanteView(LoginRequiredMixin, TemplateView):
             evento.meus_trabalhos = Trabalho.objects.filter(
                 inscricao=evento.minha_inscricao)
 
-        return {'eventos': eventos}
+        trabalhos_por_inscricao = getattr(settings, 'TRABALHOS_POR_INSCRICAO')
+
+        return {
+            'eventos': eventos,
+            'trabalhos_por_inscricao': trabalhos_por_inscricao
+        }
 
 
 @login_required
