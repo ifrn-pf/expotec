@@ -102,3 +102,4 @@ LOGIN_REDIRECT_URL = reverse_lazy('eventos_area_usuario')
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('auth_login')
 TRABALHOS_POR_INSCRICAO = 2
+FILE_UPLOAD_MAX_SIZE = 10 * 1024 * 1024
