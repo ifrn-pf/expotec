@@ -18,7 +18,15 @@ class ModalidadeAdmin(admin.ModelAdmin):
 
 @admin.register(Trabalho)
 class TrabalhoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'inscricao', 'area', 'modalidade')
+    list_display = ('titulo', 'usuario', 'area', 'modalidade')
     list_filter = ('area', 'modalidade')
     search_fields = ('titulo',)
     raw_id_fields = ('inscricao',)
+
+    def usuario(self, obj):
+        return obj.inscricao.usuario
+
+    def get_queryset(self, request):
+        return super(TrabalhoAdmin,self).get_queryset(request)\
+                                        .select_related('inscricao')\
+                                        .select_related('inscricao__usuario')

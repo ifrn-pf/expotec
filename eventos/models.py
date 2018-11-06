@@ -96,7 +96,7 @@ class Inscricao(models.Model):
                                 related_name="inscricoes")
 
     def __str__(self):
-        return 'Inscrição #%d: %s' % (self.pk, str(self.usuario))
+        return '#%d' % (self.pk)
 
     class Meta:
         verbose_name = 'inscrição'
