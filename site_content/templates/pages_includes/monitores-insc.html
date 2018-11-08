@@ -1,0 +1,28 @@
+{% load static %}
+<style type="text/css">
+  .popover {
+    position: absolute;
+    left: 15px;
+    z-index: 100;
+  }
+  .popover img {
+      border-radius: 5px;
+  }
+  .popover div.close {
+      float: right;
+      position: absolute;
+      color: black;
+      left: 270px;
+  }
+</style>
+<div class="popover">
+  <div class="close"><i class="close icon"></i></div>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScYHOhuIK9rPHBHM4xpQdopuapmdqMWFtdgW5rT0fyIrsSjeQ/viewform" target="_blank">
+    <img src="{% static 'img/monitores-insc.png' %}">
+  </a>
+</div>
+<script type="text/javascript">
+$("div.close").click(function(){
+    $("div.popover").hide()
+})
+</script>
