@@ -99,6 +99,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = ('semantic-ui',)
 REGISTRATION_FORM = 'eventos.forms.RegisterForm'
 ACCOUNT_AUTHENTICATED_REGISTRATION_REDIRECTS = True
 LOGIN_REDIRECT_URL = reverse_lazy('eventos_area_usuario')
+SIMPLE_BACKEND_REDIRECT_URL = LOGIN_REDIRECT_URL
 LOGOUT_REDIRECT_URL = reverse_lazy('home')
 LOGIN_URL = reverse_lazy('auth_login')
 TRABALHOS_POR_INSCRICAO = 2
