@@ -13,7 +13,7 @@ class UsuarioForm(forms.ModelForm):
         model = Usuario
         fields = ('nome_completo', 'nome_social', 'email', 'cpf',
                   'endereco', 'cidade', 'uf', 'pais',
-                  'instituicao', 'curso')
+                  'instituicao', 'curso', 'is_staff', 'groups')
 
 
 class UsuarioChangeForm(UsuarioForm):

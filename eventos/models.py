@@ -7,6 +7,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.utils.formats import date_format, time_format, number_format
+from django.utils.translation import gettext_lazy as _
 
 
 class UsuarioManager(BaseUserManager):
@@ -21,6 +22,7 @@ class UsuarioManager(BaseUserManager):
 
     def create_superuser(self, email, password, **kwargs):
         user = self.create_user(email, password=password, **kwargs)
+        user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
@@ -43,9 +45,13 @@ class Usuario(PermissionsMixin, AbstractBaseUser):
                                    blank=True, null=True)
     curso = models.CharField('curso', max_length=100, blank=True, null=True)
     is_active = models.BooleanField(default=True, verbose_name='ativo')
+    is_staff = models.BooleanField(
+            _('staff status'),
+            default=False,
+            help_text=_('Designates whether the user can log into this admin site.'),
+    )
     date_joined = models.DateTimeField(default=timezone.now, editable=False,
                                        verbose_name='cadastro em')
-
     objects = UsuarioManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['nome_completo']
@@ -53,10 +59,6 @@ class Usuario(PermissionsMixin, AbstractBaseUser):
     @property
     def username(self):
         return self.get_short_name()
-
-    @property
-    def is_staff(self):
-        return self.is_superuser
 
     def __str__(self):
         if self.nome_completo:
