@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django import forms
+from django.contrib.auth import password_validation
+from django.contrib.auth.forms import (ReadOnlyPasswordHashField,
+                                       UserCreationForm)
+from django.utils.translation import gettext_lazy as _
 from crispy_forms.helper import FormHelper
 from .models import Usuario, Evento, Inscricao
 
@@ -9,11 +13,34 @@ class UsuarioForm(forms.ModelForm):
     helper = FormHelper()
     helper.form_tag = False
 
+    password = ReadOnlyPasswordHashField(
+        label=_("Password"),
+        help_text=_(
+            "Raw passwords are not stored, so there is no way to see this "
+            "user's password, but you can change the password using "
+            "<a href=\"../password/\">this form</a>."
+        ),
+    )
+
     class Meta:
         model = Usuario
         fields = ('nome_completo', 'nome_social', 'email', 'cpf',
                   'endereco', 'cidade', 'uf', 'pais',
                   'instituicao', 'curso', 'is_staff', 'groups')
+
+
+class UsuarioAddform(UserCreationForm):
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(
+                self.error_messages['password_mismatch'],
+                code='password_mismatch',
+            )
+        self.instance.email = self.cleaned_data.get('email')
+        password_validation.validate_password(self.cleaned_data.get('password2'), self.instance)
+        return password2
 
 
 class UsuarioChangeForm(UsuarioForm):
