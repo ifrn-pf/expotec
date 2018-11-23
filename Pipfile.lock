@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "89dad288c4070654e8366773e7ed2f59bd68abd779ae3997403d621a13a1aa73"
+            "sha256": "584853c5e4b45e6424ea6b5cc27cb6d0e4936701e89b8a00e18892ce420c3064"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,14 @@
             "index": "pypi",
             "version": "==1.11.16"
         },
+        "django-choices": {
+            "hashes": [
+                "sha256:14e086ad7b17fa700afdef520bc11be85793a9da586e41691eee4e4c0a9c890f",
+                "sha256:9505b54150fd523fd63e009fa32c626b63c007f65feb7ae4b10578b6acade9fa"
+            ],
+            "index": "pypi",
+            "version": "==1.6.1"
+        },
         "django-crispy-forms": {
             "hashes": [
                 "sha256:5952bab971110d0b86c278132dae0aa095beee8f723e625c3d3fa28888f1675f",
@@ -49,10 +57,10 @@
         },
         "django-registration-redux": {
             "hashes": [
-                "sha256:3201ae4ebd7caa5edb62a2df64e25300fef5752594b6361cc0ad3835cef88048"
+                "sha256:ff5c8b74784acbf8ded24a6aa04607046f34e92659f278c4e143bc6a454361d1"
             ],
             "index": "pypi",
-            "version": "==2.4"
+            "version": "==2.5"
         },
         "django-sfp": {
             "hashes": [
@@ -63,10 +71,10 @@
         },
         "pytz": {
             "hashes": [
-                "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
-                "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
+                "sha256:31cb35c89bd7d333cd32c5f278fca91b523b0834369e757f4c5641ea252236ca",
+                "sha256:8e0f8568c118d3077b46be7d654cc8167fa916092e28320cde048e54bfc9f1e6"
             ],
-            "version": "==2018.5"
+            "version": "==2018.7"
         }
     },
     "develop": {}
