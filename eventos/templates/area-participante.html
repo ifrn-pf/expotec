@@ -15,11 +15,41 @@
     <h2>{{ evento.nome }}</h2>
     {% if evento.minha_inscricao and evento.permite_trabalhos %}
     <h4>Trabalhos submetidos</h4>
-    <div class="ui relaxed divided list">
-      {% for trabalho in evento.meus_trabalhos %}
-      <div class="item">{{ trabalho.titulo }}</div>
-      {% endfor %}
-    </div>
+    <table class="ui compact table">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Situação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trabalho in evento.meus_trabalhos %}
+        <tr>
+          <td>{{ trabalho.titulo }}</td>
+          <td>
+            <div class="ui {% spaceless %}
+            {% if trabalho.situacao == 1 %}
+              green
+            {% elif trabalho.situacao == 2 %}
+              orange
+            {% elif trabalho.situacao == 3 %}
+              red
+            {% else %}
+              grey
+            {% endif %}
+            {% endspaceless %} label">
+              {{ trabalho.get_situacao_display }}
+            </div>
+          </td>
+        </tr>
+        {% if trabalho.observacao %}
+        <tr>
+          <td colspan="2">{{ trabalho.observacao }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
     {% endif %}
     <div align="right">
       {% if evento.minha_inscricao %}
