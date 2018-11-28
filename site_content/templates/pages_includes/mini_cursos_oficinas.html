@@ -1,0 +1,22 @@
+{% load static %}
+<div class="ui text container">
+    <div>
+        <h2 style="text-align: center">
+            As inscrições dos minicursos ocorrerão de 3 a 5 de dezembro
+        </h2>  
+    </div><br/>
+    <div class="ui two column grid">
+    <div class="center aligned column">
+  	  <h2 class="ui header">
+        Programação dos Minicursos
+      </h2>
+  	  <a href="{% static 'minicursos/programacao.pdf' %}" class="ui primary button">Confira a programação <i class="right arrow icon"></i></a>
+  	</div>
+  	<div class="center aligned column">
+  	  <h2 class="ui header">
+        Informações sobre Minicursos 
+      </h2>
+  	  <a href="{% static 'minicursos/informacoes.pdf' %}" class="ui primary button">Confira as informações <i class="right arrow icon"></i></a>
+  	</div>
+  </div>
+</div>

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_header_content %}
-{% include 'pages_includes/monitores-insc.html' %}
+
     <div class="ui text container">
       <h1 class="ui inverted header">
         <div class="ui two column grid">
@@ -63,6 +63,13 @@
   </h2>
   <div class="ui basic segment">
   {% include 'pages_includes/programacao.html' %}
+  </div>
+
+  <h2 class="ui stripe horizontal divider header">
+    <a name="minicursos">Minicursos e Oficinas</a>
+  </h2>
+  <div class="ui basic segment">
+  {% include 'pages_includes/mini_cursos_oficinas.html' %}
   </div>
 
   <h2 class="ui stripe horizontal divider header">
