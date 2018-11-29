@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'semantic_ui',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -106,3 +107,7 @@ TRABALHOS_POR_INSCRICAO = 2
 FILE_UPLOAD_MAX_SIZE = 10 * 1024 * 1024
 CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS', default=[])
 USE_X_FORWARDED_HOST = env('USE_X_FORWARDED_HOST', default=True)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default=None)
+EMAIL_CONFIG = env.email_url('EMAIL_URL', default='consolemail://')
+vars().update(EMAIL_CONFIG)
+SITE_ID = 1

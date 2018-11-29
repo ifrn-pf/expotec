@@ -1,4 +1,4 @@
-{% extends 'base-site.html' %}
+{% extends 'registration/registration_base.html' %}
 {% load i18n crispy_forms_tags crispy_forms_filters %}
 
 {% block extrahead %}
@@ -28,8 +28,11 @@ body > .grid {
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}" />
       {{ form|crispy }}
-      <button type="submit" class="ui fluid large primary button">{% trans 'Login' %}</button>
+      <button type="submit" class="ui fluid large primary button">{% trans 'Log in' %}</button>
   </form>
+  <div class="ui basic segment">
+    <a href="{% url 'auth_password_reset' %}">Recuperar senha</a>
+  </div>
   {% if form.errors or form.non_field_errors %}
   <div class="ui error message">
     <ul class="list">
