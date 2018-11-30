@@ -41,3 +41,4 @@ class EventoAdmin(admin.ModelAdmin):
 class InscricaoAdmin(admin.ModelAdmin):
     list_display = ('evento', 'usuario')
     raw_id_fields = ('usuario',)
+    list_filter = ('evento',)
